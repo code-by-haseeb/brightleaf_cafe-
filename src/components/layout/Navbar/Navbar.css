@@ -9,8 +9,18 @@
 .navbar-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 24px;
   height: 68px;
+}
+
+.navbar-logo {
+  margin-right: auto; /* pushes everything else to the right */
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .navbar-logo {

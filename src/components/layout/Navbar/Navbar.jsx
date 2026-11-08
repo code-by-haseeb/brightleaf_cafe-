@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import Button from '../../ui/Button/Button'
+import ThemeToggle from '../../ui/ThemeToggle/ThemeToggle'
+import CartButton from '../../cart/CartButton/CartButton'
 import { NAV_LINKS } from '../../../data/navigation'
 import { SITE } from '../../../data/site'
 import './Navbar.css'
@@ -19,15 +21,6 @@ function Navbar() {
           <span>{SITE.tagline}</span>
         </a>
 
-        <button
-          className="navbar-toggle"
-          aria-label="Toggle menu"
-          aria-expanded={isOpen}
-          onClick={toggleMenu}
-        >
-          {isOpen ? '✕' : '☰'}
-        </button>
-
         <nav className={isOpen ? 'navbar-links open' : 'navbar-links'}>
           {NAV_LINKS.map((link) => (
             <a key={link.href} href={link.href} onClick={closeMenu}>
@@ -38,6 +31,20 @@ function Navbar() {
             Book a table
           </Button>
         </nav>
+
+        {/* These stay visible on every screen size */}
+        <div className="navbar-actions">
+          <ThemeToggle />
+          <CartButton />
+          <button
+            className="navbar-toggle"
+            aria-label="Toggle menu"
+            aria-expanded={isOpen}
+            onClick={toggleMenu}
+          >
+            {isOpen ? '✕' : '☰'}
+          </button>
+        </div>
       </div>
     </header>
   )

@@ -20,8 +20,26 @@
   background: var(--bg);
 }
 
+/* Dark colors. Used when:
+   1. the user picked dark with the toggle (data-theme="dark"), or
+   2. they haven't picked light, and their computer is set to dark mode. */
+:root[data-theme='dark'] {
+  --bg: #1c1714;
+  --bg-alt: #241e1a;
+  --card: #2c2520;
+  --text: #d9cdc3;
+  --heading: #fbf3ea;
+  --muted: #a8998d;
+  --accent: #e08a4a;
+  --accent-dark: #c9733a;
+  --border: #3a312b;
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  color-scheme: dark;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
     --bg: #1c1714;
     --bg-alt: #241e1a;
     --card: #2c2520;

@@ -29,15 +29,19 @@ src/
 │   ├── Reviews/
 │   └── Contact/
 │
+├── context/cart/            Shared cart state (Context + reducer)
+│
 ├── components/
+│   ├── cart/                CartButton (navbar icon), CartDrawer (side panel)
 │   ├── layout/              Parts that appear on every page
 │   │   ├── MainLayout/        Navbar + page content + Footer
 │   │   ├── Navbar/
 │   │   └── Footer/
 │   └── ui/                  Small reusable building blocks
-│       ├── Button/
-│       ├── Card/
-│       └── SectionTitle/
+│       ├── Button/, Card/, SectionTitle/
+│       ├── ThemeToggle/       🌙 / ☀️ button
+│       ├── Lightbox/          Full-screen photo viewer
+│       └── BackToTop/         ↑ button after scrolling
 │
 ├── assets/images/           Photos. Import them in JS to get their URL.
 ├── data/                    The content (text, menu items, reviews, photos).
@@ -80,6 +84,23 @@ main.jsx
 | **Custom hook**: logic moved out of a component | `hooks/useContactForm.js` |
 | **Separating data from UI** | `data/` folder |
 | **Importing images** | `data/menu.js` imports photos, `MenuItem.jsx` shows them with `<img>` |
+| **useEffect + cleanup** (timers) | `hooks/useOpenStatus.js`: live "Open now" badge, updates every minute |
+| **useEffect + cleanup** (event listeners) | `hooks/useScrolledPast.js`, `components/ui/Lightbox/Lightbox.jsx` (arrow keys) |
+| **Saving to localStorage** | `hooks/useLocalStorage.js`, used by `hooks/useTheme.js` |
+| **Derived state** (calculate, don't store) | `sections/Menu/Menu.jsx`: search + category filter |
+| **useReducer** | `context/cart/cartReducer.js`: all cart changes in one place |
+| **Context** (share state without props) | `context/cart/CartProvider.jsx` + `hooks/useCart.js` |
+| **useRef** (reach a DOM element) | `components/cart/CartDrawer/CartDrawer.jsx`: focuses the close button |
+| **useCallback** | `context/cart/CartProvider.jsx`: keeps `closeCart` stable |
+
+## Features to try in the browser
+
+- 🛒 Click **+ Add** on menu items, then the cart icon. Change quantities, place an order. Refresh: the cart is remembered.
+- 🌙 Click the moon/sun in the navbar. Refresh: your choice is remembered.
+- 🟢 The badge at the top shows if the café is open right now (7am – 9pm, your computer's time).
+- 🔍 Type in the menu search box, e.g. "latte".
+- 🖼️ Click a gallery photo. Use ← → keys, Esc to close.
+- ⬆️ Scroll down: a button appears to jump back to the top.
 
 ## Practice exercises (easy → harder)
 
@@ -91,4 +112,6 @@ main.jsx
 6. Add a photo to the gallery: put a `.jpg` in `assets/images/`, then add it to `data/gallery.js`.
 7. Build a new section, like `sections/Team/`, and add it to `HomePage.jsx`.
 8. Add a "Clear" button to the contact form, inside `useContactForm`.
-9. Install `react-router-dom` and add a second page, like `pages/AboutPage.jsx`.
+9. Add a "Clear cart" button to the cart drawer (hint: `clearCart` already exists in `useCart`).
+10. Change the opening hours in `data/site.js` and watch the badge change.
+11. Install `react-router-dom` and add a second page, like `pages/AboutPage.jsx`.
