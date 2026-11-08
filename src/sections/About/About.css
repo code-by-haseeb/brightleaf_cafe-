@@ -1,0 +1,25 @@
+.feature {
+  padding: 0;
+  overflow: hidden; /* keeps the photo inside the rounded corners */
+  transition: transform 0.2s;
+}
+
+.feature:hover {
+  transform: translateY(-4px);
+}
+
+.feature-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.feature-body {
+  padding: 24px;
+}
+
+.feature p {
+  color: var(--muted);
+  margin: 0;
+}

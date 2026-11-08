@@ -1,0 +1,19 @@
+.review {
+  margin: 0;
+}
+
+.review-stars {
+  color: #e8a33d;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.review blockquote {
+  margin: 0 0 16px;
+  font-style: italic;
+}
+
+.review figcaption {
+  font-weight: 600;
+  color: var(--heading);
+}

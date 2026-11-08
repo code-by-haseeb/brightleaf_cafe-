@@ -1,0 +1,13 @@
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  margin-bottom: 40px;
+}
+
+.section-title-center {
+  text-align: center;
+}
+
+.section-title-left {
+  text-align: left;
+  margin-bottom: 24px;
+}
